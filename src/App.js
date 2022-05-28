@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Layout from './Layout';
+import { useState } from 'react';
+import SongDetail from './content/SongDetail';
+import AddSongPopUp from './content/AddSongPopUp'
+
+const songList=[
+  {name:"song name 1"},
+  {name:"song name 2"},
+  {name:"song name 3"},
+  {name:"song name 4"},
+]
+
 
 function App() {
+  const [currSong,setCurrSong]=useState(null)
+ const [clicked,setClicked]=useState(false)
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     
+      <Layout songs={songList} selectedSong={setCurrSong} setPopUpDisplay={setClicked}/>
+      { (currSong!=null)? 
+          <SongDetail selected={songList[currSong]} /> : ''}
+      {clicked? <AddSongPopUp />:'b '}
     </div>
   );
 }
