@@ -6,7 +6,7 @@ function SongList (props){
         <div className='songList'>
         
         {props.songs.map((element,i) => {
-            return  <Song obj={element}  index={i} selectedSong={props.selectedSong}/>
+            return  <Song obj={element} key={i}  index={i} selectedSong={props.selectedSong}/>
 
         })
         }
