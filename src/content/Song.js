@@ -1,15 +1,29 @@
+ 
+import React from "react";
+
  function Song(props){
+    
 
     function playSong(e){
+        // debugger
            props.selectedSong(e.target.id)
 
     }
-    return(
-        <div className="track"  id={props.index} onClick={playSong}>
-            <button onClick={()=>{props.setDeleteSongId(props.index)}}>delete</button>
-        {props.index+1}- {props.obj.name} 
+    function deleteSong(e){
+        // debugger
+        props.delete2(props.obj.name)
 
+ }
+    return(
+        
+        <div className="track">
+            <button onClick={deleteSong} className="xButton">X</button>
+        <div   id={props.index} onClick={playSong}>    
+        <b>{props.index+1}</b>  - {props.obj.name} <br/> {props.obj.singer}
         </div>
+        
+        </div>
+
     )
  }
 
